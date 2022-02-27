@@ -3,6 +3,8 @@ package com.example.springtransactional.controller;
 
 import com.example.springtransactional.model.User;
 import com.example.springtransactional.service.UserService;
+import com.example.springtransactional.vo.TelefoneVO;
+import com.example.springtransactional.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +40,12 @@ public class MainController {
                                           @RequestParam String cep, @RequestParam(required = false) String endereco,
                                           @RequestParam Integer idEndereco) {
         return userService.salvarComTransacao(idUser,userName,email,bairro,cep,endereco,idEndereco);
+    }
+
+
+    @PostMapping(path="/add/telefone/comtransacao")
+    public @ResponseBody User addNewTelefoneComTransacao(@RequestBody  UserVO userVO ) {
+        return userService.salvarTelefoneComTransacao(userVO,null);
     }
 
 

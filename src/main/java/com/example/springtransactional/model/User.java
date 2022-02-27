@@ -27,4 +27,8 @@ public class User {
     @JoinColumn(name="USUARIO_ID")
     private List<Endereco> enderecos ;
 
+    @OneToMany(mappedBy =  "user" , cascade = CascadeType.ALL)
+    private List<Telefone> telefones;
+
+
 }

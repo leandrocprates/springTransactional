@@ -3,7 +3,11 @@ package com.example.springtransactional.service;
 import com.example.springtransactional.model.Endereco;
 import com.example.springtransactional.model.User;
 import com.example.springtransactional.repository.UserRepository;
+import com.example.springtransactional.vo.TelefoneVO;
+import com.example.springtransactional.vo.UserVO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +22,10 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    @Qualifier("userModelMapper")
+    ModelMapper userModelMapper ;
 
     public User salvar(Integer idUser , String userName, String email, String bairro, String cep, String endereco, Integer idEndereco){
         User n = new User();
@@ -53,6 +61,12 @@ public class UserService {
         userNew = userRepository.save(userNew);
 
         return userNew ;
+    }
+
+
+    public User salvarTelefoneComTransacao(UserVO userVO, TelefoneVO telefoneVO){
+        User user = userModelMapper.map(userVO,User.class);
+        return user;
     }
 
 

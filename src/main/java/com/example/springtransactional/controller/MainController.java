@@ -45,7 +45,7 @@ public class MainController {
 
     @PostMapping(path="/add/telefone/comtransacao")
     public @ResponseBody User addNewTelefoneComTransacao(@RequestBody  UserVO userVO ) {
-        return userService.salvarTelefoneComTransacao(userVO,null);
+        return userService.salvarTelefoneComTransacao(userVO);
     }
 
 

@@ -64,9 +64,9 @@ public class UserService {
     }
 
 
-    public User salvarTelefoneComTransacao(UserVO userVO, TelefoneVO telefoneVO){
+    public User salvarTelefoneComTransacao(UserVO userVO){
         User user = userModelMapper.map(userVO,User.class);
-        return user;
+        return userRepository.save(user);
     }
 
 

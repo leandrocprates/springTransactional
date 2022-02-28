@@ -1,6 +1,7 @@
 package com.example.springtransactional.service;
 
 import com.example.springtransactional.model.Endereco;
+import com.example.springtransactional.model.Telefone;
 import com.example.springtransactional.model.User;
 import com.example.springtransactional.repository.UserRepository;
 import com.example.springtransactional.vo.TelefoneVO;
@@ -34,6 +35,13 @@ public class UserService {
         n.setEmail(email);
         Endereco end = enderecoService.createEndereco(idEndereco, bairro, cep, endereco);
         n.setEnderecos(new ArrayList<>(){{add(end);}});
+
+        Telefone telefone = new Telefone();
+        telefone.setTipo("celular");
+        telefone.setDdd(11);
+        telefone.setPhone(975016032L);
+        n.setTelefones(new ArrayList<>(){{add(telefone);}});
+
         return userRepository.save(n);
     }
 

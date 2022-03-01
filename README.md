@@ -17,4 +17,25 @@ Retorna Tudo
 
 GET http://localhost:8080/demo/all
 
+POST http://localhost:8080/demo/add/telefone/comtransacao 
+
+body : 
+
+```json
+{
+    "id": 0 ,
+    "name":"teste",
+    "email": "leandro@amilc.com",
+    "telefone":  [
+        {
+            "id": 0 ,
+            "ddd": 11,
+            "phone": 975016032,
+            "tipo": "celular"    
+        }
+
+    ]
+
+}
+```
 

@@ -1,5 +1,6 @@
 package com.example.springtransactional.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,10 +25,11 @@ public class User {
     private String email;
 
     @OneToMany(fetch = FetchType.LAZY ,  cascade = CascadeType.ALL)
-    @JoinColumn(name="USUARIO_ID")
+    @JoinColumn(name="user_id")
     private List<Endereco> enderecos ;
 
     @OneToMany(mappedBy =  "user" , cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Telefone> telefones;
 
 

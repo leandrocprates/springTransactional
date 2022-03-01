@@ -1,5 +1,7 @@
 package com.example.springtransactional.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,7 @@ public class Telefone {
     private String tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference // evita loop no retorno do json
     private User user ;
 
 }

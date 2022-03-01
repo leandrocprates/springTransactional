@@ -3,8 +3,8 @@ package com.example.springtransactional.service;
 import com.example.springtransactional.model.Endereco;
 import com.example.springtransactional.model.Telefone;
 import com.example.springtransactional.model.User;
+import com.example.springtransactional.repository.TelefoneRepository;
 import com.example.springtransactional.repository.UserRepository;
-import com.example.springtransactional.vo.TelefoneVO;
 import com.example.springtransactional.vo.UserVO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,9 @@ public class UserService {
     UserRepository userRepository;
 
     @Autowired
+    TelefoneRepository telefoneRepository ;
+
+    @Autowired
     @Qualifier("userModelMapper")
     ModelMapper userModelMapper ;
 
@@ -36,13 +39,17 @@ public class UserService {
         Endereco end = enderecoService.createEndereco(idEndereco, bairro, cep, endereco);
         n.setEnderecos(new ArrayList<>(){{add(end);}});
 
+        User userNew = userRepository.save(n);
+
         Telefone telefone = new Telefone();
         telefone.setTipo("celular");
         telefone.setDdd(11);
         telefone.setPhone(975016032L);
-        n.setTelefones(new ArrayList<>(){{add(telefone);}});
+        telefone.setUser(userNew); //necessario para vincular user com telefone , ja que mapeamento
+                                    // usando mapped by cascade all não funciona
+        Telefone telefoneSaved = telefoneRepository.save(telefone);
 
-        return userRepository.save(n);
+        return userNew ;
     }
 
     public List<User> getAllUsers(){

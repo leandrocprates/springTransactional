@@ -3,10 +3,7 @@ package com.example.springtransactional.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
@@ -22,5 +19,8 @@ public class Endereco {
     @NotNull(message = "Endereco esta nulo")
     private String endereco ;
     private String bairro ;
+
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //User user ;//se colocar da problema no retorno em loop
 
 }

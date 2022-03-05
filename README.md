@@ -17,6 +17,8 @@ Retorna Tudo
 
 GET http://localhost:8080/demo/all
 
+
+
 POST http://localhost:8080/demo/add/telefone/comtransacao 
 
 body : 
@@ -38,4 +40,9 @@ body :
 
 }
 ```
+
+Busca pelo Id do Telefone : 
+
+GET http://localhost:8080/demo/telefone/id/9
+
 

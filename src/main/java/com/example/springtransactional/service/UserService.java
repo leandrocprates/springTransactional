@@ -81,7 +81,16 @@ public class UserService {
 
     public User salvarTelefoneComTransacao(UserVO userVO){
         User user = userModelMapper.map(userVO,User.class);
-        return userRepository.save(user);
+
+        User userNew = userRepository.save(user);
+
+        userNew.getTelefones().stream().forEach(telefone -> {
+                telefone.setUser(userNew);
+                telefoneRepository.save(telefone);
+            }
+        );
+
+        return userNew;
     }
 
 

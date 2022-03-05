@@ -1,9 +1,10 @@
 package com.example.springtransactional.controller;
 
 
+import com.example.springtransactional.model.Telefone;
 import com.example.springtransactional.model.User;
+import com.example.springtransactional.service.TelefoneService;
 import com.example.springtransactional.service.UserService;
-import com.example.springtransactional.vo.TelefoneVO;
 import com.example.springtransactional.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import java.util.List;
 public class MainController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private TelefoneService telefoneService ;
 
     @PostMapping(path="/add")
     public @ResponseBody User addNewUser (@RequestParam Integer idUser , @RequestParam String userName,
@@ -47,6 +50,12 @@ public class MainController {
     public @ResponseBody User addNewTelefoneComTransacao(@RequestBody  UserVO userVO ) {
         return userService.salvarTelefoneComTransacao(userVO);
     }
+
+    @GetMapping(path="/telefone/id/{id}")
+    public @ResponseBody Telefone getByPhoneId(@PathVariable Integer id) {
+        return telefoneService.getById(id);
+    }
+
 
 
 }

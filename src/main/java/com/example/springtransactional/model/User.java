@@ -28,7 +28,7 @@ public class User {
     @JoinColumn(name="user_id")
     private List<Endereco> enderecos ;
 
-    @OneToMany(mappedBy =  "user" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy =  "user" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Telefone> telefones;
 

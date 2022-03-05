@@ -19,7 +19,7 @@ public class Telefone {
     private Long phone;
     private String tipo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference // evita loop no retorno do json
     private User user ;
 

@@ -1,9 +1,7 @@
 package com.example.springtransactional.mapper;
 
 import com.example.springtransactional.model.Telefone;
-import com.example.springtransactional.model.User;
 import com.example.springtransactional.vo.TelefoneVO;
-import com.example.springtransactional.vo.UserVO;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;

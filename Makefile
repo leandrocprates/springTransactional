@@ -1,0 +1,12 @@
+package:
+	@ mvn clean  install -DskipTests=true
+
+docker-image-build: package
+	@ docker build -t lprates/aplicacao .
+
+run: docker-image-build
+	@ docker-compose -f docker-compose-mysql.yml -f docker-compose-aplicacao.yml up -d
+
+stop:
+	@ docker-compose -f docker-compose-aplicacao.yml -f docker-compose-mysql.yml down -v
+

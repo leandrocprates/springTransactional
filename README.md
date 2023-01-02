@@ -15,8 +15,12 @@ docker run -d --network=backend -e DB_HOST=mysql -p 8080:8080 lprates/aplicacao
 5 - Executar Docker aplicação: 
 docker-compose -f docker-compose-aplicacao.yml up -d
 
+6 - Derrubar aplicações :
+docker-compose -f docker-compose-aplicacao.yml down
+docker-compose -f docker-compose-mysql.yml down
 
-
+7 - Automatizando com Makefile:
+make run
 
 Insere novo registro : 
 

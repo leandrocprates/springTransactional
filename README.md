@@ -1,5 +1,20 @@
 # springTransactional
 
+1 - Compilação :
+mvn clean install -DskipTests=true
+
+2 - Build da imagem :
+docker build -t lprates/aplicacao .
+
+3 - Executar Docker Mysql e PhpMyAdmin:
+docker-compose -f docker-compose-mysql.yml up -d
+
+4 - Executar Docker da aplicação ligando a Rede do Mysql :
+docker run -d --network=backend -e DB_HOST=mysql -p 8080:8080 lprates/aplicacao
+
+
+
+
 
 Insere novo registro : 
 

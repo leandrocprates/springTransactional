@@ -12,6 +12,8 @@ docker-compose -f docker-compose-mysql.yml up -d
 4 - Executar Docker da aplicação ligando a Rede do Mysql :
 docker run -d --network=backend -e DB_HOST=mysql -p 8080:8080 lprates/aplicacao
 
+5 - Executar Docker aplicação: 
+docker-compose -f docker-compose-aplicacao.yml up -d
 
 
 

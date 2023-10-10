@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/demo")
+@RequestMapping
 public class MainController {
     @Autowired
     private UserService userService;
@@ -22,12 +22,12 @@ public class MainController {
     private TelefoneService telefoneService ;
 
     
-    @GetMapping(path = "")
+    @GetMapping(path = "/")
     public ResponseEntity<String> healthcheck(){
         return new ResponseEntity<>("checagem OK", HttpStatus.OK);
     }
 
-    @PostMapping(path="/add")
+    @PostMapping(path="/demo/add")
     public @ResponseBody User addNewUser (@RequestParam Integer idUser , @RequestParam String userName,
                                           @RequestParam String email, @RequestParam String bairro,
                                           @RequestParam String cep, @RequestParam(required = false) String endereco,
@@ -35,17 +35,17 @@ public class MainController {
         return userService.salvar(idUser,userName,email,bairro,cep,endereco,idEndereco);
     }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="/demo/all")
     public @ResponseBody List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping(path="/id/{id}")
+    @GetMapping(path="/demo/id/{id}")
     public @ResponseBody User getById(@PathVariable Integer id) {
         return userService.getById(id);
     }
 
-    @PostMapping(path="/add/comtransacao")
+    @PostMapping(path="/demo/add/comtransacao")
     public @ResponseBody User addNewUserComTransacao(@RequestParam Integer idUser , @RequestParam String userName,
                                           @RequestParam String email, @RequestParam String bairro,
                                           @RequestParam String cep, @RequestParam(required = false) String endereco,
@@ -54,12 +54,12 @@ public class MainController {
     }
 
 
-    @PostMapping(path="/add/telefone/comtransacao")
+    @PostMapping(path="/demo/add/telefone/comtransacao")
     public @ResponseBody User addNewTelefoneComTransacao(@RequestBody  UserVO userVO ) {
         return userService.salvarTelefoneComTransacao(userVO);
     }
 
-    @GetMapping(path="/telefone/id/{id}")
+    @GetMapping(path="/demo/telefone/id/{id}")
     public @ResponseBody Telefone getByPhoneId(@PathVariable Integer id) {
         return telefoneService.getById(id);
     }
